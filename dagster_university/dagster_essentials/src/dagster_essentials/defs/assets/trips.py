@@ -4,7 +4,7 @@ from dagster_essentials.defs.assets import constants
 
 @dg.asset
 def taxi_trip_file() -> None:
-    month_to_fetch='2023-01'
+    #month_to_fetch='2023-01'
     raw_trips= requests.get(
          f"https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{month_to_fetch}.parquet"
     )
