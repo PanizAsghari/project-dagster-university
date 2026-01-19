@@ -55,7 +55,7 @@ def taxi_trips() -> None:
     deps=["taxi_zones_file"]
 )
 def taxi_zones() -> None:
-    query = """
+    query = f"""
         create or replace table zones as (
           select
             LocationID as zone_id,
