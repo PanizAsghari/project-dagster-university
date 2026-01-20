@@ -61,7 +61,7 @@ def trips_by_week() -> None:
     sum(total_amount) as total_amount,
     sum(trip_distance) as trip_distance
     from trips
-    group by date_trunc(pickup_datetime,'week')
+    group by period
 
     """
     conn = duckdb.connect(os.getenv("DUCKDB_DATABASE"))
