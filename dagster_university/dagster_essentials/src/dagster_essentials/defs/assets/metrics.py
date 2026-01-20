@@ -55,13 +55,13 @@ def manhattan_map() -> None:
 )
 def trips_by_week() -> None:
     query= """ select 
-    date_trunc(tpep_pickup_datetime,'week') as period,
+    date_trunc(pickup_datetime,'week') as period,
     count(*) as num_trips,
     sum(passenger_count) as passenger_count,
     sum(total_amount) as total_amount,
     sum(trip_distance) as trip_distance
     from trips
-    group by period
+    group by date_trunc(pickup_datetime,'week')
 
     """
     conn = duckdb.connect(os.getenv("DUCKDB_DATABASE"))
