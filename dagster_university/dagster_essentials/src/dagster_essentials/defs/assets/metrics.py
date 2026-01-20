@@ -24,7 +24,7 @@ def manhattan_stats(database: DuckDBResource) -> None:
         group by zone, borough, geometry
     """
 
-    with database.get_connection as conn:
+    with database.get_connection() as conn:
       trips_by_zone = conn.execute(query).fetch_df()
 
     trips_by_zone["geometry"] = gpd.GeoSeries.from_wkt(trips_by_zone["geometry"])
@@ -63,7 +63,7 @@ def trips_by_week(database: DuckDBResource) -> None:
     from trips
     group by period
     """
-    with database.get_connection as conn:
+    with database.get_connection() as conn:
       weekly_trips = conn.execute(query).fetch_df()
     with open(constants.TRIPS_BY_WEEK_FILE_PATH, 'w') as output_file:
         output_file.write(weekly_trips.to_csv())
