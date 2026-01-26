@@ -24,7 +24,8 @@ def taxi_zones_file() -> None:
         output.write(raw_taxi_zones.content) 
 
 @dg.asset(
-    deps= ["taxi_trip_file"]
+    deps= ["taxi_trip_file"],
+    partitions_def=montly_partition,
 )
 def taxi_trips(context: dg.AssetExecutionContext,database: DuckDBResource) -> None:
     partition_date_str = context.partition_key
