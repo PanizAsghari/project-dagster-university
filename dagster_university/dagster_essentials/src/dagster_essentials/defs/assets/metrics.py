@@ -63,8 +63,8 @@ def trips_by_week(context: dg.AssetExecutionContext , database: DuckDBResource) 
     sum(total_amount) as total_amount,
     sum(trip_distance) as trip_distance
     from trips
-    where pickup_datetime>= '{period_to_fetch}'
-    and pickup_datetime< {period_to_fetch}'::date + interval '1 week'
+    where period>= '{period_to_fetch}'
+    and period< {period_to_fetch}'::date + interval '1 week'
     group by period
     """
     with database.get_connection() as conn:
