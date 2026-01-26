@@ -7,7 +7,7 @@ import os
 
 from dagster_essentials.defs.assets import constants
 from dagster_essentials.defs.partitions import weekly_partition
-
+import pandas as pd
 @dg.asset (
         deps=["taxi_zones","taxi_trips"]
 )
