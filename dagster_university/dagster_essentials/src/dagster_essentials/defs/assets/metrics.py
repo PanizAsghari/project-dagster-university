@@ -53,7 +53,7 @@ def manhattan_map() -> None:
 @dg.asset(
     deps=["taxi_trips"]
 )
-def trips_by_week(,database: DuckDBResource) -> None:
+def trips_by_week(database: DuckDBResource) -> None:
     query= """ select 
     date_trunc('week', pickup_datetime) as period,
     count(*) as num_trips,
