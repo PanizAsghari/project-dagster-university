@@ -3,10 +3,12 @@ from dagster_essentials.defs.partitions import montly_partition,weekly_partition
 
 
 trips_by_week = dg.AssetSelection.assets("trips_by_week")
-trip_update_job=dg.define_asset_job(
+
+
+trip_update_job = dg.define_asset_job(
     name="trip_update_job",
-    selection=dg.AssetSelection.all() - trips_by_week,
-    partitions_def=montly_partition
+    partitions_def=montly_partition, # partitions added here
+    selection=dg.AssetSelection.all() - trips_by_week
 )
 weekly_update_job = dg.define_asset_job(
     name="weekly_update_job",
