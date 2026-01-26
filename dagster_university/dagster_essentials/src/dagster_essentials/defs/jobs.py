@@ -15,6 +15,4 @@ weekly_update_job = dg.define_asset_job(
     partitions_def=weekly_partition,
     selection=trips_by_week
 )
-@dg.job
-def jobs():
-    pass
+
