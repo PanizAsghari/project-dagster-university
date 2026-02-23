@@ -12,6 +12,12 @@ weekly_trip_update_job=dg.define_asset_job(
     selection=trips_by_week,
     partitions_def=weekly_partition
 )
+adhoc_request = dg.AssetSelection.assets(["adhoc_request"])
+adhoc_request_job = dg.define_asset_job(
+    name="adhoc_request_job",
+    selection=adhoc_request
+)
 @dg.job
 def jobs():
     pass
+
